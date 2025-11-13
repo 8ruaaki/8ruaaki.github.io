@@ -106,21 +106,6 @@ nav a:hover::after {
   width: 100%;
 }
 
-/* モバイル時の縦並びやレイアウト変化を禁止 */
-@media (max-width: 768px) {
-  header {
-    position: fixed;
-  }
-
-  .nav-container {
-    flex-direction: row;
-  }
-
-  nav ul {
-    flex-direction: row;
-    gap: 32px;
-  }
-}
 
 /* ===== Hero Section ===== */
 .main-visual {
@@ -325,6 +310,10 @@ footer {
   color: #999;
 }
 
+.sp-only{
+  display: none;
+}
+
 /* ===== Animation ===== */
 @keyframes fadeUp {
   0% { opacity: 0; transform: translateY(30px); }
@@ -332,11 +321,39 @@ footer {
 }
 
 /* ===== Responsive ===== */
-@media (max-width: 768px) {
-  .hero-content h1 { font-size: 3rem; }
-  .hero-content .tagline { font-size: 1.3rem; }
-  .booking-button { font-size: 1.1rem; padding: 12px 35px; }
-  .footer-content { flex-direction: column; align-items: center; text-align: center; }
+@media (max-width: 414px) {
+
+    .sp-only{
+    display: block;
+  }
+
+  .pc-only{
+    display: none;
+  }
+/* --- 1. ヘッダー/ナビゲーションの修正 --- */
+    .nav-container { flex-direction: column; padding: 12px 15px; white-space: normal; }
+    .logo a { font-size: 1.5rem; margin-bottom: 10px; display: inline-block; text-align: center;}
+     nav ul { gap: 10px; flex-wrap: wrap; justify-content: center; }
+     nav a { font-size: 0.85rem; padding: 5px 10px; }
+
+    /* --- 2. ヒーローセクションの修正 --- */
+    .main-visual { min-height: 400px; height: 40vh;/* モバイルでは少し高さを抑える */ }
+    .hero-content h1 { font-size: 1.8rem; margin: 10px 0px; }
+    .hero-content .tagline { font-size: 1.2rem; margin-bottom: 15px;}
+    .hero-content .merger-message { font-size: 0.95rem; padding: 12px 18px; }
+        /* --- 5. フッターの修正 --- */
+    .footer-content { flex-direction: column; align-items: center; text-align: center; gap: 20px; }
+    .footer-col { width: 80%; margin-bottom: 0; }
+    .footer-col a { display: inline; margin: 0 8px; } /*モバイルで横並びにする*/
+    .footer-col h4 { margin-bottom: 10px; }
+    .footer-col ul { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; }
+    .footer-col li { margin-bottom: 0; }
+
+    .photo1 { 
+      width: 300px;
+      height: 135px;
+      background-size: 100%;
+    }
 }
 </style>
 </head>
@@ -363,7 +380,7 @@ footer {
 <section class="main-visual">
   <div class="hero-content">
     <h1>手荷物案内</h1>
-    <p class="tagline">安全で快適な空の旅のために、手荷物のルールをご確認ください。</p>
+    <p class="tagline">安全で快適な空の旅のために、<br class="sp-only">手荷物のルールをご確認ください。</p>
   </div>
  
 </section>
@@ -385,7 +402,7 @@ footer {
 </section>
 
 <section class="section">
-  <h2>お預け手荷物（受託手荷物）</h2>
+  <h2>お預け手荷物<br class="sp-only">（受託手荷物）</h2>
   <p>
     ご搭乗クラスや路線により無料でお預けいただける荷物の上限が異なります。<br>
     超過分については別途料金がかかります。
@@ -401,7 +418,7 @@ footer {
 </section>
 
 <section class="section">
-  <h2>持ち込み・お預けできない物</h2>
+  <h2>持ち込み・<br class="sp-only">お預けできない物</h2>
   <p>
     安全上の理由から、以下の物品は機内への持ち込みやお預けができません。
   </p>
