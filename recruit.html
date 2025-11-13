@@ -107,22 +107,6 @@ nav a:hover::after {
   width: 100%;
 }
 
-/* モバイル時の縦並びやレイアウト変化を禁止 */
-@media (max-width: 768px) {
-  header {
-    position: fixed;
-  }
-
-  .nav-container {
-    flex-direction: row;
-  }
-
-  nav ul {
-    flex-direction: row;
-    gap: 32px;
-  }
-}
-
 /* ===== Hero Section ===== */
 .main-visual {
   background: url('Gemini_Generated_Image_y9ppxby9ppxby9pp.png') center/cover no-repeat;
@@ -196,12 +180,6 @@ nav a:hover::after {
     white-space: nowrap;
   }
 
-  /* .content{
-    width: 1200px;
-    position: relative;
-    margin-left: 40px;
-  } */
-
   h1 {
     color: var(--dark);
     text-align: center;
@@ -214,7 +192,6 @@ nav a:hover::after {
     color: var(--primary);
     font-size: 1.2em;
     margin-bottom: 40px;
-    border-bottom: 3px solid var(--light);
     padding-bottom: 10px;
   }
 
@@ -234,19 +211,15 @@ nav a:hover::after {
   width: 0; 
   height: 0;
 }
-.message-box {
-  /* スクロールバーの幅を「なし」に設定 */
-  scrollbar-width: none; 
-}
-
   /* メッセージエリア */
   .message-box {
     background-color: var(--alert-bg);
-    padding: 30px;
-    border-radius: 10px;
-    border: 1px solid var(--alert-bg);
-    margin-bottom: 30px;
+    padding: 20px;
+    margin-bottom: 20px;
     overflow-x: scroll;
+    border-bottom: 2px solid var(--dark);
+    border-top: 2px solid var(--dark);
+    scrollbar-width: none; 
   }
 
   .message-box p {
@@ -267,7 +240,7 @@ nav a:hover::after {
 
   .job-card {
     background-color: rgba(0, 0, 0, 0.3);
-    border: 2px solid var(--primary);
+    border: 1px solid var(--primary);
     border-radius: var(--radius);
     padding: 20px;
     width: calc(50% - 10px);
@@ -275,12 +248,8 @@ nav a:hover::after {
     transition: var(--transition);
     cursor: pointer;
     min-width: 300px;
+    margin-left: 60px;
   }
-
-  /* .job-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
-  } */
 
   .job-card h3 {
     color: var(--accent-dark);
@@ -344,22 +313,22 @@ nav a:hover::after {
 
   .apply-button {
      display: inline-block;
-  margin-top: 25px;
-  padding: 12px 32px;
-  font-size: 1rem;
-  color: var(--text-light);
-  background: linear-gradient(135deg, var(--primary), var(--dark));
-  border-radius: 50px;
-  text-decoration: none;
-  font-weight: bold;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-  transition: all 0.3s ease;
-  animation: fadeUp 1s ease forwards;
+    margin-top: 25px;
+    padding: 12px 32px;
+    font-size: 1rem;
+    color: var(--text-light);
+    background: linear-gradient(135deg, var(--primary), var(--dark));
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: bold;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    transition: all 0.3s ease;
+    animation: fadeUp 1s ease forwards;
   }
 
   .apply-button:hover {
     box-shadow: 0 6px 25px rgba(0,0,0,0.5);
-  background: linear-gradient(135deg, var(--dark), var(--primary));
+    background: linear-gradient(135deg, var(--dark), var(--primary));
   }
 
 /* ===== Footer ===== */
@@ -420,6 +389,10 @@ footer {
   color: #999;
 }
 
+.sp-only{
+  display: none;
+}
+
 /* ===== Animation ===== */
 @keyframes fadeUp {
   0% { opacity: 0; transform: translateY(30px); }
@@ -427,11 +400,46 @@ footer {
 }
 
 /* ===== Responsive ===== */
-@media (max-width: 768px) {
-  .hero-content h1 { font-size: 3rem; }
-  .hero-content .tagline { font-size: 1.3rem; }
-  .booking-button { font-size: 1.1rem; padding: 12px 35px; }
-  .footer-content { flex-direction: column; align-items: center; text-align: center; }
+@media (max-width: 414px) {
+
+    .sp-only{
+    display: block;
+  }
+
+  .pc-only{
+    display: none;
+  }
+/* --- 1. ヘッダー/ナビゲーションの修正 --- */
+    .nav-container { flex-direction: column; padding: 12px 15px; white-space: normal; }
+    .logo a { font-size: 1.5rem; margin-bottom: 10px; display: inline-block; text-align: center;}
+     nav ul { gap: 10px; flex-wrap: wrap; justify-content: center; }
+     nav a { font-size: 0.85rem; padding: 5px 10px; }
+
+    /* --- 2. ヒーローセクションの修正 --- */
+    .main-visual { min-height: 400px; height: 40vh;/* モバイルでは少し高さを抑える */ }
+    .hero-content h1 { font-size: 1.8rem; margin: 10px 0px; }
+    .hero-content .tagline { font-size: 1.2rem; margin-bottom: 15px;}
+    .hero-content .merger-message { font-size: 0.95rem; padding: 12px 18px; }
+        /* --- 5. フッターの修正 --- */
+    .footer-content { flex-direction: column; align-items: center; text-align: center; gap: 20px; }
+    .footer-col { width: 80%; margin-bottom: 0; }
+    .footer-col a { display: inline; margin: 0 8px; } /*モバイルで横並びにする*/
+    .footer-col h4 { margin-bottom: 10px; }
+    .footer-col ul { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; }
+    .footer-col li { margin-bottom: 0; }
+
+    .content h1 { font-size: 1.5rem; }
+    .subtitle{ font-size: 0.85rem;}
+    .container {margin: 40px; width: 300px;}
+    .message-box {background-color: var(--alert-bg); overflow-x: hidden; padding: 5px;}
+    .message-box p { margin: 0; color: var(--text-light); font-size: 0.85rem;}
+    .content h2 { font-size: 1.5rem; }
+    .job-cards {margin-left: 20px; }
+    .job-card{ min-width: 250px; margin-right: 60px;}
+    .job-card h3{ font-size: 1.2rem; }
+    .requirements-table { overflow-x: scroll; width: 300px; }
+    
+    
 }
 </style>
 </head>
@@ -458,7 +466,7 @@ footer {
 <section class="main-visual">
   <div class="hero-content">
     <h1>採用情報</h1>
-    <p class="tagline">AIと共創し、空の旅に新たな「光」を生み出す仲間を募集。</p>
+    <p class="tagline">AIと共創し、<br class="sp-only">空の旅に新たな「光」を生み出す<br class="sp-only">仲間を募集。</p>
   </div>
  
 </section>
@@ -469,11 +477,13 @@ footer {
     <p class="subtitle">— 空の旅を、最高のチームで支えませんか —</p>
 
     <div class="message-box">
-      <p style="text-align: center;">ソレイユ航空は、お客様に安心と喜びをお届けするため、日々挑戦を続けています。私たちと共に、未来の空を創り上げていく
-        <br>熱意ある仲間を募集しています。ホスピタリティ精神に溢れ、変化を恐れず成長できる方からのご応募をお待ちしております。</p>
+      <p style="text-align: center;" class="pc-only"> ソレイユ航空は、お客様に安心と喜びをお届け<br class="sp-only">するため、日々挑戦を続けています。私たちと<br class="sp-only">共に、未来の空を創り上げていく
+        <br class="pc-only">熱意ある仲間<br class="sp-only">を募集しています。ホスピタリティ精神に溢れ、<br class="sp-only">変化を恐れず成長できる方からのご応募をお待<br class="sp-only">ちしております。</p>
+
+      <p style="text-align: left;" class="sp-only"> ソレイユ航空は、お客様に安心と喜びをお届け<br class="sp-only">するため、日々挑戦を続けています。私たちと<br class="sp-only">共に、未来の空を創り上げていく
+        <br class="pc-only">熱意ある仲間<br class="sp-only">を募集しています。ホスピタリティ精神に溢れ、<br class="sp-only">変化を恐れず成長できる方からのご応募をお待<br class="sp-only">ちしております。</p>
     </div>
 
-    <hr>
 
     <h2>募集職種一覧</h2>
     <div class="job-cards">
@@ -513,15 +523,15 @@ footer {
 
     <hr>
 
-    <h2>共通募集要項 (新卒・キャリア共通)</h2>
+    <h2>共通募集要項<br class="sp-only"> (新卒・キャリア共通)</h2>
     <table class="requirements-table">
-      <thead>
+      <thead class="pc-only">
         <tr>
           <th>項目</th>
           <th>内容</th>
         </tr>
       </thead>
-      <tbody>
+      <tbody class="pc-only">
         <tr>
           <th>勤務地</th>
           <td>東京(羽田)、大阪(伊丹)、福岡、札幌(新千歳)など 各拠点</td>
@@ -547,11 +557,42 @@ footer {
           <td>社会保険完備、社員優待搭乗制度、各種手当、独身寮完備（一部拠点）</td>
         </tr>
       </tbody>
+      
+      <tbody class="sp-only">
+        <tr>
+          <th>勤務地</th>
+          <td>東京(羽田)
+              <br>大阪(伊丹)
+              <br>福岡
+              <br>札幌(新千歳)など</td>
+        </tr>
+        <tr>
+          <th>給与</th>
+          <td>経験、能力を考慮の上、<br>当社規定により決定</td>
+        </tr>
+        <tr>
+          <th>昇給・賞与</th>
+          <td>昇給：年1回 <br> 賞与：年2回<br>（業績による）</td>
+        </tr>
+        <tr>
+          <th>勤務時間</th>
+          <td>変形労働時間制<br>（フライトスケジュール<br>　に基づく）</td>
+        </tr>
+        <tr>
+          <th>休日・休暇</th>
+          <td>年間休日120日<br>（公休、特別休暇含む）
+              <br>有給休暇、慶弔休暇など</td>
+        </tr>
+        <tr>
+          <th>福利厚生</th>
+          <td>社会保険完備<br>社員優待搭乗制度<br>各種手当<br>独身寮完備（一部拠点）</td>
+        </tr>
+      </tbody>
     </table>
     
     <div class="apply-section">
       <a href="#" class="apply-button">エントリーはこちらから</a>
-      <p style="margin-top: 15px; font-size: 0.9em; color: var(--dark);">詳細な職種別要項はエントリー後にご案内いたします。</p>
+      <p style="margin-top: 15px; font-size: 0.9em; color: var(--dark);">詳細な職種別要項は<br class="sp-only">エントリー後にご案内いたします。</p>
     </div>
   </div>
   </div>

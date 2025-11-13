@@ -105,22 +105,6 @@ nav a:hover::after {
   width: 100%;
 }
 
-/* モバイル時の縦並びやレイアウト変化を禁止 */
-@media (max-width: 768px) {
-  header {
-    position: fixed;
-  }
-
-  .nav-container {
-    flex-direction: row;
-  }
-
-  nav ul {
-    flex-direction: row;
-    gap: 32px;
-  }
-}
-
 /* ===== Hero Section ===== */
 .main-visual {
   background: url('Gemini_Generated_Image_78bfzc78bfzc78bf.png') center/cover no-repeat;
@@ -217,9 +201,10 @@ main {
 }
 
 .section img {
-  width: 100%;
+  width: 50%;
   border-radius: 8px;
   margin-top: 15px;
+
 }
 
 /* ===== Button ===== */
@@ -302,6 +287,10 @@ footer {
   color: #999;
 }
 
+.sp-only{
+  display: none;
+}
+
 /* ===== Animation ===== */
 @keyframes fadeUp {
   0% { opacity: 0; transform: translateY(30px); }
@@ -309,11 +298,38 @@ footer {
 }
 
 /* ===== Responsive ===== */
-@media (max-width: 768px) {
-  .hero-content h1 { font-size: 3rem; }
-  .hero-content .tagline { font-size: 1.3rem; }
-  .booking-button { font-size: 1.1rem; padding: 12px 35px; }
-  .footer-content { flex-direction: column; align-items: center; text-align: center; }
+@media (max-width: 414px) {
+
+    .sp-only{
+    display: block;
+  }
+
+  .pc-only{
+    display: none;
+  }
+/* --- 1. ヘッダー/ナビゲーションの修正 --- */
+    .nav-container { flex-direction: column; padding: 12px 15px; white-space: normal; }
+    .logo a { font-size: 1.5rem; margin-bottom: 10px; display: inline-block; text-align: center;}
+     nav ul { gap: 10px; flex-wrap: wrap; justify-content: center; }
+     nav a { font-size: 0.85rem; padding: 5px 10px; }
+
+    /* --- 2. ヒーローセクションの修正 --- */
+    .main-visual { min-height: 400px; height: 40vh; background-size: 220%;/* モバイルでは少し高さを抑える */ }
+    .hero-content h1 { font-size: 1.8rem; margin: 10px 0px; }
+    .hero-content .tagline { font-size: 1.2rem; margin-bottom: 15px;}
+    .hero-content .merger-message { font-size: 0.95rem; padding: 12px 18px; }
+        /* --- 5. フッターの修正 --- */
+    .footer-content { flex-direction: column; align-items: center; text-align: center; gap: 20px; }
+    .footer-col { width: 80%; margin-bottom: 0; }
+    .footer-col a { display: inline; margin: 0 8px; } /*モバイルで横並びにする*/
+    .footer-col h4 { margin-bottom: 10px; }
+    .footer-col ul { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; }
+    .footer-col li { margin-bottom: 0; }
+    .contact-button { margin-left: 100px; }
+    .section img { width: 100%;}
+
+    
+    
 }
 </style>
 </head>
@@ -341,7 +357,7 @@ footer {
 <section class="main-visual">
   <div class="hero-content">
     <h1>CSR活動</h1>
-    <p class="tagline">次世代に持続可能な空をつなぐ活動を行っています。</p>
+    <p class="tagline">次世代に持続可能な<br class="sp-only">空をつなぐ活動を行っています。</p>
   </div>
  
 </section>
@@ -352,21 +368,21 @@ footer {
     <h2>環境への取り組み</h2>
     <p>最新のAI航法システム「Skylink」を活用し、飛行ルートを最適化。燃料消費を最小限に抑え、CO₂排出量を従来比で20％削減することを目指します。<br>
     また、オリオン900型機では軽量素材を採用し、騒音や環境負荷の低減にも貢献しています。また、全機体で持続可能な航空燃料（SAF）の導入を進めて参ります。</p>
-    <img src="mv331sjqhnv.jpg" alt="環境保全活動" style="width: 50%;">
-    <div style="font-size: small;">出典：資源エネルギー庁ウェブサイト（https://www.enecho.meti.go.jp/about/special/johoteikyo/saf.html）</div>
+    <img src="mv331sjqhnv.jpg" alt="環境保全活動">
+    <div style="font-size: small;">出典：資源エネルギー庁ウェブサイト（https://www.enecho.meti.go.jp/about/special/<br class="sp-only">johoteikyo/saf.html）</div>
   </div>
 
   <div class="section">
     <h2>地域社会への貢献</h2>
     <p>地元学校との教育プログラム「未来の空プロジェクト」を実施し、子どもたちに航空技術の魅力を伝えています。</p>
-    <img src="Gemini_Generated_Image_s42zwss42zwss42z.png" alt="地域社会貢献活動"style="width: 50%;">
+    <img src="Gemini_Generated_Image_s42zwss42zwss42z.png" alt="地域社会貢献活動">
   </div>
 
   <div class="section">
     <h2>働き方とダイバーシティ</h2>
     <p>AIを活用した勤務シフト管理により、従業員のワークライフバランスを重視。<br>
     性別・年齢・国籍に関わらず活躍できる環境を整備し、航空業界での新しい働き方を提案しています。</p>
-    <img src="Gemini_Generated_Image_v5vr1xv5vr1xv5vr.png" alt="職場の多様性"style="width: 50%;">
+    <img src="Gemini_Generated_Image_v5vr1xv5vr1xv5vr.png" alt="職場の多様性">
   </div>
 
   <a href="contact.html" class="contact-button">お問い合わせ</a>
